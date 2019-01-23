@@ -1,0 +1,32 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://mongo:mongo@localhost:27017/admin",
+  "postgres": "postgres://postgres:postgres@localhost:5432/postgres",
+  "authentication": {
+    "secret": "310037fae2c9da280b1d7eacb4b098b87cc728e9d634e74b1569cce654760079e3057513c1d3b936def29e2557d3a8898dbc939722ddcfd210a8f8e97c8cf5a3052cfa892e9c6d83a7b7f58577ce4cf7de8cddb74d419bffa653e53451b1d3ebf13d1548d2a9b9c0afba9a57f56ac38ab303e8df006b480e0fa3b791dee9313baa3a3dcee617be7913c934e4788c39223facc1a2857c49a50b58b619a1668a8df715978d15ac645c12ea1326dd419c91ca48ccab292bc6d6946f90dc979ec95b9daba5348dab5acccd94c8a2e26ef96f7e547be7e63fbd430df12e01d29f790f5b30d67211d7aa3ac91baedd6d26f826c9416c8f4aa4294a8f7c7dd62b1db14d",
+    "strategies": ["jwt", "local"],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "\\username",
+      "passwordField": "password"
+    }
+  }
+}

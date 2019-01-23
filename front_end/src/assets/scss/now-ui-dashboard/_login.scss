@@ -1,0 +1,13 @@
+.login {
+  background-image: url("../img/bg3.jpg");
+  background-size: cover;
+  height: 100vh;
+
+  .form-control {
+    background-color: #67d273;
+
+    &:focus {
+      background-color: rgb(195, 236, 175);
+    }
+  }
+}
