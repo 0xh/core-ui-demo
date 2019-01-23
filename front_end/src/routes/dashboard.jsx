@@ -1,5 +1,5 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
-import TableList from "views/TableList/TableList.jsx";
+import Users from "views/Users/Users.jsx";
 import UserPage from "views/UserPage/UserPage.jsx";
 
 var dashRoutes = [
@@ -19,7 +19,7 @@ var dashRoutes = [
     path: "/users",
     name: "Users",
     icon: "files_paper",
-    component: TableList
+    component: Users
   },
   { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }
 ];
