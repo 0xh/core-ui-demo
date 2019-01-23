@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-string-refs */
 import React from "react";
 import { connect } from "react-redux";
 import {
@@ -40,16 +42,16 @@ class Header extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-  dropdownToggle(e) {
+  dropdownToggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
   }
   getBrand() {
     var name;
-    dashboardRoutes.map((prop, key) => {
+    dashboardRoutes.map(prop => {
       if (prop.collapse) {
-        prop.views.map((prop, key) => {
+        prop.views.map(prop => {
           if (prop.path === this.props.location.pathname) {
             name = prop.name;
           }
@@ -155,7 +157,9 @@ class Header extends React.Component {
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
+                  <DropdownItem tag="a" href="/logout">
+                    Logout
+                  </DropdownItem>
                   <DropdownItem tag="a">Another Action</DropdownItem>
                   <DropdownItem tag="a">Something else here</DropdownItem>
                 </DropdownMenu>

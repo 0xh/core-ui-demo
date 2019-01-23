@@ -16,8 +16,8 @@ var dashRoutes = [
     component: UserPage
   },
   {
-    path: "/extended-tables",
-    name: "Table List",
+    path: "/users",
+    name: "Users",
     icon: "files_paper",
     component: TableList
   },
