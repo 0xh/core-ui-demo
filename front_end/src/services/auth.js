@@ -1,39 +1,36 @@
 import axios from "axios";
 import { host } from "../constants";
-let localStorage;
+let localStorage = global.window.localStorage;
 
-// // If we're testing, use a local storage polyfill
-// if (global.process && process.env.NODE_ENV === "test") {
-//   localStorage = require("localStorage");
-// } else {
-//   // If not, use the browser one
-//   localStorage = global.window.localStorage;
-// }
-localStorage = global.window.localStorage;
 const auth = {
   /**
    * Logs a user in, returning a promise with `true` when done
    * @param  {string} username The username of the user
    * @param  {string} password The password of the user
    */
-  async login(username, password) {
-    if (auth.loggedIn()) return Promise.resolve(true);
-    // var headers = {
-    //   "Content-Type": "application/json"
-    // };
-    // Post a fake request
-    return axios
-      .post(
-        `${host}/authentication`,
-        { username, password, strategy: "local" }
-        // headers
-      )
-      .then(response => {
-        // Save token to local storage
-        localStorage.token = response.data.accessToken;
-        localStorage.userName = response.data.user.name;
-        return Promise.resolve(true);
-      });
+  login(username, password) {
+    if (auth.loggedIn())
+      return {
+        token: localStorage.token,
+        userName: localStorage.userName
+      };
+
+    return new Promise(function(resolve, reject) {
+      axios
+        .post(`${host}/authentication`, {
+          username,
+          password,
+          strategy: "local"
+        })
+        .then(response => {
+          localStorage.token = response.data.accessToken;
+          localStorage.userName = response.data.user.name;
+          resolve(response.data);
+        })
+        .catch(function(err) {
+          reject(err);
+        });
+    });
   },
   /**
    * Logs the current user out

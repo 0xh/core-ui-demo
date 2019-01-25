@@ -13,7 +13,10 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/login" component={Login} />
+        {this.props.auth.isAuthenticated ? null : (
+          <Route path="/login" component={Login} />
+        )}
+
         {indexRoutes.map((prop, key) => {
           return (
             <PrivateRoute

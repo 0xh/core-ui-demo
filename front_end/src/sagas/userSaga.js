@@ -21,6 +21,6 @@ export function* addUser() {
   yield takeEvery(userConstants.ADD_USER, function*(request) {
     yield call(userService.create, request.user);
     yield put({ type: userConstants.FETCH_REQUEST });
-    yield history.push("/");
+    yield history.push("/users");
   });
 }

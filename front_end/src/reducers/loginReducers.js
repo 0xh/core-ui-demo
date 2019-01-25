@@ -7,14 +7,24 @@ const initialState = {
   loginFailed: false
 };
 
+const clearState = {
+  isAuthenticated: false,
+  userName: "",
+  loginFailed: false
+};
+
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case loginConstants.LOGIN_SUCCESS: {
-      return Object.assign({}, state, { isAuthenticated: true });
+      return Object.assign({}, state, {
+        userName: action.token.user.name,
+        isAuthenticated: true,
+        loginFailed: false
+      });
     }
 
     case loginConstants.LOGOUT_REQUEST: {
-      return Object.assign({}, state, { isAuthenticated: false });
+      return Object.assign({}, state, clearState);
     }
 
     case loginConstants.LOGIN_FAILED: {

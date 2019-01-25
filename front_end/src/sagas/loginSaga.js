@@ -22,8 +22,11 @@ export function* loginFlow() {
       // If `authorize` was the winner...
       if (winner.auth) {
         // ...we send Redux appropiate actions
-        yield put({ type: loginConstants.LOGIN_SUCCESS }); // User is logged in (authorized)
-        yield call(history.push, "/");
+        yield put({
+          type: loginConstants.LOGIN_SUCCESS,
+          token: winner.auth
+        }); // User is logged in (authorized)
+        yield put(history.push("/"));
       }
     } catch (error) {
       yield put({ type: loginConstants.LOGIN_FAILED });

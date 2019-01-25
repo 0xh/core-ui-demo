@@ -62,13 +62,15 @@ class Login extends Component {
                 id="password"
                 component={RenderInput}
               />
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={this.props.submitting}
-              >
-                Login
-              </button>
+              <div className="text-center pt-2">
+                <button
+                  type="submit"
+                  className="btn btn-primary m-auto"
+                  disabled={this.props.submitting}
+                >
+                  Login
+                </button>
+              </div>
             </form>
           </div>
         </div>

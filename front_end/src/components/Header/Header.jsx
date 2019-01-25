@@ -49,21 +49,28 @@ class Header extends React.Component {
   }
   getBrand() {
     var name;
+    let url = this.props.location.pathname;
+    if (url.includes("/")) {
+      let arr = url.split("/");
+      if (arr.length > 2) {
+        url = "/" + arr[1];
+      }
+    }
     dashboardRoutes.map(prop => {
       if (prop.collapse) {
         prop.views.map(prop => {
-          if (prop.path === this.props.location.pathname) {
+          if (prop.path === url) {
             name = prop.name;
           }
           return null;
         });
       } else {
         if (prop.redirect) {
-          if (prop.path === this.props.location.pathname) {
+          if (prop.path === url) {
             name = prop.name;
           }
         } else {
-          if (prop.path === this.props.location.pathname) {
+          if (prop.path === url) {
             name = prop.name;
           }
         }

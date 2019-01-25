@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import {
   FormGroup,
@@ -48,8 +49,8 @@ class FieldGroup extends React.Component {
           )}
           <Input
             {...inputProps}
-            onFocus={e => this.setState({ focus: true })}
-            onBlur={e => this.setState({ focus: false })}
+            onFocus={() => this.setState({ focus: true })}
+            onBlur={() => this.setState({ focus: false })}
           />
           {addonRight !== undefined ? (
             <InputGroupAddon {...inputGroupAddonProps}>
